@@ -15,6 +15,8 @@ body {
     background: #0f0f0f;
     color: #fff;
     min-height: 100vh;
+    display:flex;
+    flex-direction:column;
 }
 
 .hero {
@@ -402,4 +404,60 @@ nav ul li a {
 @keyframes orbit-mobile {
     from { transform: rotate(0deg) translateX(120px) rotate(0deg); }
     to { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+}
+
+
+.liquid-footer {
+    position: relative;
+    margin-top: auto; 
+    background: #ff014f; 
+    min-height: 200px;
+    padding: 20px 8%;
+    filter: url("#goo"); 
+}
+
+.footer-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: white;
+    padding-top: 50px;
+}
+
+.bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 180px;
+    background: #ff014f;
+    filter: url("#goo");
+}
+
+.bubble {
+    position: absolute;
+    background: #ff014f;
+    border-radius: 50%;
+    top: 0;
+    left: var(--left);
+    width: var(--size);
+    height: var(--size);
+    animation: float-up var(--time) infinite ease-out;
+    animation-delay: var(--delay);
+    transform: translate(-50%, 0%);
+    opacity: 0;
+    will-change: top, opacity; 
+}
+
+@keyframes float-up {
+    0% {
+        top: 30px; 
+        transform: translate(-50%, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        top: -250px; 
+        transform: translate(-50%, -100px) scale(0.2); 
+        opacity: 0;
+    }
 }
