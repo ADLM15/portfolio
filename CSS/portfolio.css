@@ -322,6 +322,7 @@ nav ul li a {
     font-size: 14px;
 }
 
+
 .orbit-container {
     position: relative;
     width: 400px; 
@@ -354,6 +355,15 @@ nav ul li a {
     font-size: 20px;
     box-shadow: 0 0 15px rgba(255, 1, 79, 0.5);
     animation: orbit 20s linear infinite;
+    cursor: pointer;
+    transition: 0.3s ease;
+    z-index: 10;
+}
+
+.orbit-item:hover {
+    background: #ff014f; 
+    color: #fff;
+    transform: scale(1.2); 
 }
 
 .orbit-item:nth-child(2) { animation-delay: 0s; }
@@ -385,6 +395,8 @@ nav ul li a {
         font-size: 16px;
         animation: orbit-mobile 20s linear infinite;
     }
+    .orbit-container { width: 300px; height: 300px; }
+    .orbit-item { animation: orbit-mobile 20s linear infinite; }
 }
 
 @keyframes orbit-mobile {
