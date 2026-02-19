@@ -131,6 +131,7 @@ nav ul li a {
 .skill-card:hover {
     background: #ff014f;
     transform: scale(1.05);
+    cursor: pointer;
 }
 
 
