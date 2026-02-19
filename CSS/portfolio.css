@@ -123,6 +123,15 @@ nav ul li a {
     transition: 0.5s;
 }
 
+.skill-card > i {
+    font-size: 70px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    display: block;
+    text-shadow: 0 0 10px #ff014f;
+}
+
+
 .skill-card img {
     width: 50%;
     margin-bottom: 30px;
