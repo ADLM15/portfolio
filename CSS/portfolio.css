@@ -546,3 +546,28 @@ nav ul li a {
     margin-top: 8px;
     font-weight: 600;
 }
+
+.filter-buttons {
+    width: 100%;
+    text-align: center;
+    margin: 30px 0 60px 0;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 2px solid #ff014f;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 8px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: #ff014f;
+}
+
+.filter-btn.active {
+    background: #ff014f;
+}

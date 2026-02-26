@@ -58,9 +58,16 @@
     <div id="skills">
         <div class="container">
             <h1 class="sub-title">Mes Compétences</h1>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Tout</button>
+            <button class="filter-btn" data-filter="web">Développement Web</button>
+            <button class="filter-btn" data-filter="backend">Backend</button>
+            <button class="filter-btn" data-filter="tools">Outils</button>
+            <button class="filter-btn" data-filter="game">Game Dev</button>
+        </div>
             <div class="skills-list">
-                
-                <div class="skill-card" id="skill-html">    
+               
+                <div class="skill-card" data-category="web" id="skill-html">    
                     <i class="fab fa-html5"></i>
                     <h2>HTML</h2>
                     <p>Maîtrise de la structure sémantique des pages web.</p>
@@ -80,7 +87,7 @@
             </div>
 
 
-                <div class="skill-card" id="skill-css">
+                <div class="skill-card" data-category="web" id="skill-css">
                     <i class="fab fa-css3-alt"></i>
                     <h2>CSS</h2>
                     <p>Conception de designs responsives et animations modernes.</p>
@@ -100,7 +107,7 @@
                 </div>
 
 
-                <div class="skill-card" id="skill-js">
+                <div class="skill-card" data-category="web" id="skill-js">
                     <i class="fab fa-js"></i>
                     <h2>JAVASCRIPT</h2>
                     <p>Création d'interactions dynamiques et gestion du DOM.</p>
@@ -120,7 +127,7 @@
                 </div>
 
 
-                <div class="skill-card" id="skill-python">
+                <div class="skill-card" data-category="backend" id="skill-python">
                     <i class="fab fa-python"></i>
                     <h2>PYTHON</h2>
                     <p>Développement de scripts et analyse de données (Data).</p>
@@ -140,7 +147,7 @@
                 </div>
 
 
-                <div class="skill-card" id="skill-php">
+                <div class="skill-card" data-category="backend" id="skill-php">
                     <i class="fab fa-php"></i>
                     <h2>PHP</h2>
                     <p>Gestion du côté serveur et des bases de données.</p>
@@ -160,7 +167,7 @@
                 </div>
                 
                 
-                <div class="skill-card" id="skill-unity">
+                <div class="skill-card" data-category="backend" id="skill-csharp">
                     <i class="fab fa-c"></i>
                     <h2>C#</h2>
                     <p></p>Programmation orientée objet et création de logiques applicatives robustes.
@@ -180,7 +187,7 @@
                 </div>
 
 
-                 <div class="skill-card" id="skill-unity">
+                 <div class="skill-card" data-category="game" id="skill-unity">
                     <i class="fab fa-unity"></i>
                     <h2>UNITY</h2>
                     <p>Développement de mécaniques de gameplay et gestion des scènes et assets.</p>
@@ -200,7 +207,7 @@
                 </div>
 
                 
-                 <div class="skill-card" id="skill-react">
+                 <div class="skill-card" data-category="web" id="skill-react">
                     <i class="fab fa-react"></i>
                     <h2>REACT</h2>
                     <p>Création de composants réactifs et gestion de l’état avec hooks.</p>
@@ -220,7 +227,7 @@
                 </div>
 
 
-                 <div class="skill-card" id="skill-github">
+                 <div class="skill-card" data-category="tools" id="skill-github">
                     <i class="fab fa-github"></i>
                     <h2>GITHUB</h2>
                     <p>Versionnement du code et gestion collaborative des projets.</p>
@@ -240,7 +247,7 @@
                 </div>
 
 
-                <div class="skill-card" id="skill-github">
+                <div class="skill-card" data-category="backend" id="skill-github">
                     <i class="fab fa-database"></i>
                     <h2>SQL</h2>
                     <p>Manipulation de données et optimisation des requêtes et jointures.</p>
