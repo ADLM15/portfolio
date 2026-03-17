@@ -125,3 +125,38 @@ document.addEventListener('mousemove', (e) => {
     document.body.style.setProperty('--x', e.clientX + 'px');
     document.body.style.setProperty('--y', e.clientY + 'px');
 });
+
+const burger = document.getElementById('burger');
+const navMenu = document.querySelector('.navbar ul');
+
+burger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    burger.classList.toggle('active');
+});
+
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+const cursor = document.querySelector('.cursor');
+
+document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+});
+
+document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        cursor.classList.add('active');
+    });
+
+    el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('active');
+    });
+});
