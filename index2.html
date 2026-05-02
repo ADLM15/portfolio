@@ -1,0 +1,55 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>9 Dot Navigation</title>
+  <link rel="stylesheet" href="style2.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+  <main class="app">
+    <nav class="navigation" id="nav" aria-label="Menu rapide">
+      <button class="nav-item" type="button" aria-label="Mode nuit" style="--x: -72px; --y: -72px;">
+        <ion-icon name="moon-outline"></ion-icon>
+      </button>
+
+      <button class="nav-item" type="button" aria-label="Messages" style="--x: 0px; --y: -72px;">
+        <ion-icon name="chatbubble-outline"></ion-icon>
+      </button>
+
+      <button class="nav-item" type="button" aria-label="Historique" style="--x: 72px; --y: -72px;">
+        <ion-icon name="time-outline"></ion-icon>
+      </button>
+
+      <button class="nav-item" type="button" aria-label="Camera" style="--x: -72px; --y: 0px;">
+        <ion-icon name="camera-outline"></ion-icon>
+      </button>
+
+      <button class="nav-item center" type="button" aria-label="Ouvrir le menu" aria-expanded="false" style="--x: 0px; --y: 0px;">
+        <ion-icon name="grid-outline"></ion-icon>
+      </button>
+
+      <button class="nav-item" type="button" aria-label="Notifications" style="--x: 72px; --y: 0px;">
+        <ion-icon name="notifications-outline"></ion-icon>
+      </button>
+
+      <button class="nav-item" type="button" aria-label="Premium" style="--x: -72px; --y: 72px;">
+        <ion-icon name="diamond-outline"></ion-icon>
+      </button>
+
+      <button class="nav-item" type="button" aria-label="Ambiance" style="--x: 0px; --y: 72px;">
+        <ion-icon name="water-outline"></ion-icon>
+      </button>
+
+      <button class="nav-item" type="button" aria-label="Parametres" style="--x: 72px; --y: 72px;">
+        <ion-icon name="settings-outline"></ion-icon>
+      </button>
+    </nav>
+  </main>
+
+  <script src="script2.js"></script>
+</body>
+</html>
