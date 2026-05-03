@@ -854,3 +854,76 @@ nav ul li a:hover::after {
 .burger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
 }
+
+@media (max-width: 768px) {
+
+    .main-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .text-content h1 {
+        font-size: 40px;
+    }
+
+    .text-content h3 {
+        font-size: 20px;
+    }
+
+    .desc-text1,
+    .desc-text2 {
+        font-size: 14px;
+    }
+
+    .profile-pic {
+        width: 200px;
+        height: 200px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .slider {
+        height: 300px;
+    }
+
+    .project-info p {
+        font-size: 14px;
+    }
+
+}
+
+button:active,
+a:active {
+    transform: scale(0.95);
+}
+
+.nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 900;
+}
+
+.nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}

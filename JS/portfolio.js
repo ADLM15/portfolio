@@ -160,3 +160,28 @@ document.querySelectorAll('a, button').forEach(el => {
         cursor.classList.remove('active');
     });
 });
+
+const isMobile = window.innerWidth <= 768;
+
+if (!isMobile) {
+    skillCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+                });
+})}
+if (isMobile) {
+    document.querySelector('.cursor').style.display = "none";
+}
+
+if (isMobile) {
+    slide.addEventListener('click', () => {
+        slide.classList.toggle('flip');
+    });
+} else {
+    slide.addEventListener('mouseenter', () => {
+        slide.classList.add('flip');
+    });
+
+    slide.addEventListener('mouseleave', () => {
+        slide.classList.remove('flip');
+    });
+}
