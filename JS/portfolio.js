@@ -10,76 +10,67 @@ function showSlide(n) {
     slides[index].classList.add('active');
 }
 
-nextBtn.addEventListener('click', () => {
-    showSlide(index + 1);
-});
+if (nextBtn && prevBtn && slides.length > 0) {
+    nextBtn.addEventListener('click', () => {
+        showSlide(index + 1);
+    });
 
-prevBtn.addEventListener('click', () => {
-    showSlide(index - 1);
-});
+    prevBtn.addEventListener('click', () => {
+        showSlide(index - 1);
+    });
+}
+
+const isMobile = window.innerWidth <= 768;
 
 slides.forEach(slide => {
-    slide.addEventListener('mouseenter', () => {
-        slide.classList.add('flip');
-    });
+    if (isMobile) {
+        slide.addEventListener('click', () => {
+            slide.classList.toggle('flip');
+        });
+    } else {
+        slide.addEventListener('mouseenter', () => {
+            slide.classList.add('flip');
+        });
 
-    slide.addEventListener('mouseleave', () => {
-        slide.classList.remove('flip');
-    });
+        slide.addEventListener('mouseleave', () => {
+            slide.classList.remove('flip');
+        });
+    }
 });
 
 const skillCards = document.querySelectorAll('.skill-card');
 
 skillCards.forEach(card => {
+    if (!isMobile) {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
 
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
 
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
 
-        const centerX = rect.width / 25;
-        const centerY = rect.height / 25;
+            const rotateY = (x - centerX) / 25;
+            const rotateX = (centerY - y) / 25;
 
-        const rotateY = (x - centerX) / 25;
-        const rotateX = (centerY - y) / 25;
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+        });
 
-        card.style.transform =
-            `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'rotateX(0) rotateY(0) scale(1)';
-    });
-
-});
-
-const form = document.getElementById('contactForm');
-const formMsg = document.getElementById('formMsg');
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    formMsg.textContent = "Message envoyé avec succès !";
-    form.reset();
-
-    setTimeout(() => {
-        formMsg.textContent = "";
-    }, 3000);
-});
-skillCards.forEach(card => {
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+        });
+    }
 
     card.addEventListener('click', () => {
-
         card.classList.toggle('active-skill');
 
         if (card.classList.contains('active-skill')) {
             card.style.transform = 'rotateX(0) rotateY(0) scale(1)';
         }
-
     });
-
 });
+
 const filterBtns = document.querySelectorAll('.filter-btn');
 const skillCardsFilter = document.querySelectorAll('.skill-card');
 
@@ -91,18 +82,30 @@ filterBtns.forEach(btn => {
         const filter = btn.getAttribute('data-filter');
 
         skillCardsFilter.forEach(card => {
-            if (filter === "all") {
-                card.style.display = "block";
-            } else if (card.getAttribute('data-category') === filter) {
-                card.style.display = "block";
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                card.style.display = 'block';
             } else {
-                card.style.display = "none";
+                card.style.display = 'none';
             }
-
         });
-
     });
 });
+
+const form = document.getElementById('contactForm');
+const formMsg = document.getElementById('formMsg');
+
+if (form && formMsg) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        formMsg.textContent = 'Message envoyé avec succès !';
+        form.reset();
+
+        setTimeout(() => {
+            formMsg.textContent = '';
+        }, 3000);
+    });
+}
 
 const reveals = document.querySelectorAll('.reveal');
 
@@ -127,15 +130,55 @@ document.addEventListener('mousemove', (e) => {
 });
 
 const burger = document.getElementById('burger');
-const navMenu = document.querySelector('.navbar ul');
+const navMenu = document.getElementById('navMenu');
+const navbar = document.querySelector('.navbar');
 
-burger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    burger.classList.toggle('active');
-});
+const navOverlay = document.createElement('div');
+navOverlay.className = 'nav-overlay';
+document.body.appendChild(navOverlay);
+
+function closeMenu() {
+    navMenu.classList.remove('active');
+    burger.classList.remove('active');
+    navOverlay.classList.remove('active');
+    navbar.classList.remove('menu-open');
+    document.body.classList.remove('menu-open');
+    burger.setAttribute('aria-expanded', 'false');
+}
+
+function openMenu() {
+    navMenu.classList.add('active');
+    burger.classList.add('active');
+    navOverlay.classList.add('active');
+    navbar.classList.add('menu-open');
+    document.body.classList.add('menu-open');
+    burger.setAttribute('aria-expanded', 'true');
+}
+
+if (burger && navMenu && navbar) {
+    burger.addEventListener('click', () => {
+        if (navMenu.classList.contains('active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    navOverlay.addEventListener('click', closeMenu);
+
+    navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeMenu();
+        }
+    });
+}
 
 window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
 
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
@@ -146,42 +189,23 @@ window.addEventListener('scroll', () => {
 
 const cursor = document.querySelector('.cursor');
 
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-});
-
-document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        cursor.classList.add('active');
+if (cursor && !isMobile) {
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
     });
 
-    el.addEventListener('mouseleave', () => {
-        cursor.classList.remove('active');
+    document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.classList.add('active');
+        });
+
+        el.addEventListener('mouseleave', () => {
+            cursor.classList.remove('active');
+        });
     });
-});
-
-const isMobile = window.innerWidth <= 768;
-
-if (!isMobile) {
-    skillCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-                });
-})}
-if (isMobile) {
-    document.querySelector('.cursor').style.display = "none";
 }
 
-if (isMobile) {
-    slide.addEventListener('click', () => {
-        slide.classList.toggle('flip');
-    });
-} else {
-    slide.addEventListener('mouseenter', () => {
-        slide.classList.add('flip');
-    });
-
-    slide.addEventListener('mouseleave', () => {
-        slide.classList.remove('flip');
-    });
+if (cursor && isMobile) {
+    cursor.style.display = 'none';
 }

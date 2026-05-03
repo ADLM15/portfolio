@@ -7,55 +7,65 @@
     <link rel="stylesheet" href="./CSS/portfolio.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
-<div class="cursor"></div>
-<body>
 
-    <div class="hero">
+<body>
+    <div class="cursor"></div>
+
+    <div class="hero" id="hero">
         <nav class="navbar">
             <h1 class="logo"><span>M</span>onPortfolio</h1>
-            <ul>
+
+            <ul id="navMenu">
                 <li><a href="#hero">Accueil</a></li>
                 <li><a href="#skills">Mes Compétences</a></li>
                 <li><a href="#portfolio">Mes projets</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            
-            <div class="burger" id="burger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
 
+            <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
 
         <div class="main-content">
             <div class="img-content">
                 <div class="orbit-container">
-                <img src="./image/rayane1.png" alt="Photo de profil" class="profile-pic">
+                    <img src="./image/rayane1.png" alt="Photo de profil" class="profile-pic">
 
-        <a href="#skill-html" class="orbit-item"><i class="fab fa-html5"></i></a>
-        <a href="#skill-css" class="orbit-item"><i class="fab fa-css3-alt"></i></a>
-        <a href="#skill-js" class="orbit-item"><i class="fab fa-js"></i></a>
-        <a href="#skill-python" class="orbit-item"><i class="fab fa-python"></i></a>
-        <a href="#skill-php" class="orbit-item"><i class="fab fa-php"></i></a>
-        <a href="#skill-react" class="orbit-item"><i class="fab fa-react"></i></a>
-        <a href="#skill-github" class="orbit-item"><i class="fab fa-github"></i></a>
-        <a href="#skill-unity" class="orbit-item"><i class="fab fa-unity"></i></a>
-        <a href="#skill-unity" class="orbit-item"><i class="fab fa-c"></i></a>
-        <a href="#skill-unity" class="orbit-item"><i class="fab fa-database"></i></a>
-            </div>
+                    <a href="#skill-html" class="orbit-item"><i class="fab fa-html5"></i></a>
+                    <a href="#skill-css" class="orbit-item"><i class="fab fa-css3-alt"></i></a>
+                    <a href="#skill-js" class="orbit-item"><i class="fab fa-js"></i></a>
+                    <a href="#skill-python" class="orbit-item"><i class="fab fa-python"></i></a>
+                    <a href="#skill-php" class="orbit-item"><i class="fab fa-php"></i></a>
+                    <a href="#skill-react" class="orbit-item"><i class="fab fa-react"></i></a>
+                    <a href="#skill-github" class="orbit-item"><i class="fab fa-github"></i></a>
+                    <a href="#skill-unity" class="orbit-item"><i class="fab fa-unity"></i></a>
+                    <a href="#skill-csharp" class="orbit-item"><i class="fas fa-code"></i></a>
+                    <a href="#skill-sql" class="orbit-item"><i class="fas fa-database"></i></a>
+                </div>
             </div>
 
             <div class="text-content reveal">
                 <h2 class="intro-text">Bonjour, je suis</h2>
                 <h1>AOUDACHE Rayane <span>étudiant 2ème année.</span></h1>
                 <h3>Développeur Web Full Stack</h3>
-                <p class="desc-text1">Je suis un étudiant de deuxième année en préparatoire à l’école IPSSI du campus de Paris. Je poursuis un cursus en informatique qui me donne des bases solides en programmation, en développement web et en conception de projets numériques. Passionné par le monde du développement, je souhaite aujourd’hui mettre en pratique mes connaissances au sein d’une entreprise et enrichir mon expérience professionnelle.</p>
+
+                <p class="desc-text1">
+                    Je suis un étudiant de deuxième année en préparatoire à l’école IPSSI du campus de Paris. Je poursuis un cursus en informatique qui me donne des bases solides en programmation, en développement web et en conception de projets numériques. Passionné par le monde du développement, je souhaite aujourd’hui mettre en pratique mes connaissances au sein d’une entreprise et enrichir mon expérience professionnelle.
+                </p>
+
                 <br>
-                <p class="desc-text2">Motivé, sérieux et curieux, je m’investis pleinement dans les projets que j’entreprends. J’ai déjà eu une première expérience grâce à un stage en développement full stack, qui m’a permis de mettre un pied dans ce domaine. J’aime relever des défis techniques, apprendre de nouvelles technologies et travailler en équipe.</p>
+
+                <p class="desc-text2">
+                    Motivé, sérieux et curieux, je m’investis pleinement dans les projets que j’entreprends. J’ai déjà eu une première expérience grâce à un stage en développement full stack, qui m’a permis de mettre un pied dans ce domaine. J’aime relever des défis techniques, apprendre de nouvelles technologies et travailler en équipe.
+                </p>
+
                 <br>
+
                 <div class="buttons">
-                    <a href="./image/AOUDACHE-Rayane-cv (12).pdf"target="_blank" class="btn">Télécharger CV</a>
+                    <a href="./image/AOUDACHE-Rayane-cv (12).pdf" target="_blank" class="btn">Télécharger CV</a>
                     <a href="#contact" class="btn btn-secondary">Contactez-moi</a>
                 </div>
             </div>
@@ -65,214 +75,215 @@
     <div id="skills">
         <div class="container">
             <h1 class="sub-title">Mes Compétences</h1>
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">Tout</button>
-            <button class="filter-btn" data-filter="web">Développement Web</button>
-            <button class="filter-btn" data-filter="backend">Backend</button>
-            <button class="filter-btn" data-filter="tools">Outils</button>
-            <button class="filter-btn" data-filter="game">Game Dev</button>
-        </div>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Tout</button>
+                <button class="filter-btn" data-filter="web">Développement Web</button>
+                <button class="filter-btn" data-filter="backend">Backend</button>
+                <button class="filter-btn" data-filter="tools">Outils</button>
+                <button class="filter-btn" data-filter="game">Game Dev</button>
+            </div>
+
             <div class="skills-list reveal">
-               
-                <div class="skill-card" data-category="web" id="skill-html">    
+                <div class="skill-card" data-category="web" id="skill-html">
                     <i class="fab fa-html5"></i>
                     <h2>HTML</h2>
                     <p>Maîtrise de la structure sémantique des pages web.</p>
-                <div class="skill-back-content">
-        <div class="back-top">
-            <img src="./image/html.png" alt="HTML">
-        </div>
-        <div class="back-bottom">
-            <i class="fab fa-html5"></i>
-            <h3>HTML</h3>
-            <div class="progress-bar-container">
-                <div class="progress-bar-fill" style="width:90%"></div>
-            </div>
-            <span class="percent">90%</span>
-        </div>
-            </div>
-            </div>
 
+                    <div class="skill-back-content">
+                        <div class="back-top">
+                            <img src="./image/html.png" alt="HTML">
+                        </div>
+                        <div class="back-bottom">
+                            <i class="fab fa-html5"></i>
+                            <h3>HTML</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width:90%"></div>
+                            </div>
+                            <span class="percent">90%</span>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="skill-card" data-category="web" id="skill-css">
                     <i class="fab fa-css3-alt"></i>
                     <h2>CSS</h2>
                     <p>Conception de designs responsives et animations modernes.</p>
-                <div class="skill-back-content">
-        <div class="back-top">
-            <img src="./image/css.png" alt="HTML">
-        </div>
-        <div class="back-bottom">
-            <i class="fab fa-css3-alt"></i>
-            <h3>CSS</h3>
-            <div class="progress-bar-container">
-                <div class="progress-bar-fill" style="width:80%"></div>
-            </div>
-            <span class="percent">80%</span>
-        </div>
-            </div>
-                </div>
 
+                    <div class="skill-back-content">
+                        <div class="back-top">
+                            <img src="./image/css.png" alt="CSS">
+                        </div>
+                        <div class="back-bottom">
+                            <i class="fab fa-css3-alt"></i>
+                            <h3>CSS</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width:80%"></div>
+                            </div>
+                            <span class="percent">80%</span>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="skill-card" data-category="web" id="skill-js">
                     <i class="fab fa-js"></i>
                     <h2>JAVASCRIPT</h2>
                     <p>Création d'interactions dynamiques et gestion du DOM.</p>
-                 <div class="skill-back-content">
-        <div class="back-top">
-            <img src="./image/js.png" alt="HTML">
-        </div>
-        <div class="back-bottom">
-            <i class="fab fa-js"></i>
-            <h3>JAVASCRIPT</h3>
-            <div class="progress-bar-container">
-                <div class="progress-bar-fill" style="width:70%"></div>
-            </div>
-            <span class="percent">70%</span>
-        </div>
-                </div>
-                </div>
 
+                    <div class="skill-back-content">
+                        <div class="back-top">
+                            <img src="./image/js.png" alt="JavaScript">
+                        </div>
+                        <div class="back-bottom">
+                            <i class="fab fa-js"></i>
+                            <h3>JAVASCRIPT</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width:70%"></div>
+                            </div>
+                            <span class="percent">70%</span>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="skill-card" data-category="backend" id="skill-python">
                     <i class="fab fa-python"></i>
                     <h2>PYTHON</h2>
-                    <p>Développement de scripts et analyse de données (Data).</p>
-                <div class="skill-back-content">
-        <div class="back-top">
-            <img src="./image/python.png" alt="HTML">
-        </div>
-        <div class="back-bottom">
-            <i class="fab fa-python"></i>
-            <h3>PYTHON</h3>
-            <div class="progress-bar-container">
-                <div class="progress-bar-fill" style="width:60%"></div>
-            </div>
-            <span class="percent">60%</span>
-        </div>
-                </div>
-                </div>
+                    <p>Développement de scripts et analyse de données.</p>
 
+                    <div class="skill-back-content">
+                        <div class="back-top">
+                            <img src="./image/python.png" alt="Python">
+                        </div>
+                        <div class="back-bottom">
+                            <i class="fab fa-python"></i>
+                            <h3>PYTHON</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width:60%"></div>
+                            </div>
+                            <span class="percent">60%</span>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="skill-card" data-category="backend" id="skill-php">
                     <i class="fab fa-php"></i>
                     <h2>PHP</h2>
                     <p>Gestion du côté serveur et des bases de données.</p>
-                <div class="skill-back-content">
-        <div class="back-top">
-            <img src="./image/php.png" alt="HTML">
-        </div>
-        <div class="back-bottom">
-            <i class="fab fa-php"></i>
-            <h3>PHP</h3>
-            <div class="progress-bar-container">
-                <div class="progress-bar-fill" style="width:50%"></div>
-            </div>
-            <span class="percent">50%</span>
-        </div>
+
+                    <div class="skill-back-content">
+                        <div class="back-top">
+                            <img src="./image/php.png" alt="PHP">
+                        </div>
+                        <div class="back-bottom">
+                            <i class="fab fa-php"></i>
+                            <h3>PHP</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width:50%"></div>
+                            </div>
+                            <span class="percent">50%</span>
+                        </div>
+                    </div>
                 </div>
-                </div>
-                
-                
+
                 <div class="skill-card" data-category="backend" id="skill-csharp">
                     <i class="fab fa-node-js"></i>
                     <h2>Node</h2>
-                    <p>Développement backend moderne et création d’API rapides grâce à l’exécution JavaScript côté serveur.</p>
-                <div class="skill-back-content">
-        <div class="back-top">
-            <img src="./image/node.js.png" alt="c#">
-        </div>
-        <div class="back-bottom">
-            <i class="fab fa-node-js"></i>
-            <h3>Node</h3>
-            <div class="progress-bar-container">
-                <div class="progress-bar-fill" style="width:50%"></div>
-            </div>
-            <span class="percent">30%</span>
-        </div>
-                </div>
+                    <p>Développement backend moderne et création d’API rapides grâce à JavaScript côté serveur.</p>
+
+                    <div class="skill-back-content">
+                        <div class="back-top">
+                            <img src="./image/node.js.png" alt="Node.js">
+                        </div>
+                        <div class="back-bottom">
+                            <i class="fab fa-node-js"></i>
+                            <h3>Node</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width:30%"></div>
+                            </div>
+                            <span class="percent">30%</span>
+                        </div>
+                    </div>
                 </div>
 
-
-                 <div class="skill-card" data-category="game" id="skill-unity">
+                <div class="skill-card" data-category="game" id="skill-unity">
                     <i class="fab fa-unity"></i>
                     <h2>UNITY</h2>
                     <p>Développement de mécaniques de gameplay et gestion des scènes et des assets.</p>
-                <div class="skill-back-content">
-        <div class="back-top">
-            <img src="./image/UNITY.jpg" alt="HTML">
-        </div>
-        <div class="back-bottom">
-            <i class="fab fa-unity"></i>
-            <h3>UNITY</h3>
-            <div class="progress-bar-container">
-                <div class="progress-bar-fill" style="width:45%"></div>
-            </div>
-            <span class="percent">45%</span>
-        </div>
-                </div>
+
+                    <div class="skill-back-content">
+                        <div class="back-top">
+                            <img src="./image/UNITY.jpg" alt="Unity">
+                        </div>
+                        <div class="back-bottom">
+                            <i class="fab fa-unity"></i>
+                            <h3>UNITY</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width:45%"></div>
+                            </div>
+                            <span class="percent">45%</span>
+                        </div>
+                    </div>
                 </div>
 
-                
-                 <div class="skill-card" data-category="web" id="skill-react">
+                <div class="skill-card" data-category="web" id="skill-react">
                     <i class="fab fa-react"></i>
                     <h2>REACT</h2>
                     <p>Création de composants réactifs et gestion de l’état avec hooks.</p>
-                <div class="skill-back-content">
-        <div class="back-top">
-            <img src="./image/react.png" alt="HTML">
-        </div>
-        <div class="back-bottom">
-            <i class="fab fa-react"></i>
-            <h3>REACT</h3>
-            <div class="progress-bar-container">
-                <div class="progress-bar-fill" style="width:45%"></div>
-            </div>
-            <span class="percent">45%</span>
-        </div>
-                </div>
+
+                    <div class="skill-back-content">
+                        <div class="back-top">
+                            <img src="./image/react.png" alt="React">
+                        </div>
+                        <div class="back-bottom">
+                            <i class="fab fa-react"></i>
+                            <h3>REACT</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width:45%"></div>
+                            </div>
+                            <span class="percent">45%</span>
+                        </div>
+                    </div>
                 </div>
 
-
-                 <div class="skill-card" data-category="tools" id="skill-github">
+                <div class="skill-card" data-category="tools" id="skill-github">
                     <i class="fab fa-github"></i>
                     <h2>GITHUB</h2>
                     <p>Versionnement du code et gestion collaborative des projets.</p>
-                <div class="skill-back-content">
-        <div class="back-top">
-            <img src="./image/GitHub.png" alt="HTML">
-        </div>
-        <div class="back-bottom">
-            <i class="fab fa-github"></i>
-            <h3>GITHUB</h3>
-            <div class="progress-bar-container">
-                <div class="progress-bar-fill" style="width:70%"></div>
-            </div>
-            <span class="percent">70%</span>
-        </div>
-                </div>
-                </div>
 
+                    <div class="skill-back-content">
+                        <div class="back-top">
+                            <img src="./image/GitHub.png" alt="GitHub">
+                        </div>
+                        <div class="back-bottom">
+                            <i class="fab fa-github"></i>
+                            <h3>GITHUB</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width:70%"></div>
+                            </div>
+                            <span class="percent">70%</span>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="skill-card" data-category="backend" id="skill-sql">
-                    <i class="fab fa-database"></i>
+                    <i class="fas fa-database"></i>
                     <h2>SQL</h2>
                     <p>Manipulation de données et optimisation des requêtes et jointures.</p>
-                <div class="skill-back-content">
-        <div class="back-top">
-            <img src="./image/sql.png" alt="HTML">
-        </div>
-        <div class="back-bottom">
-            <i class="fab fa-database"></i>
-            <h3>SQL</h3>
-            <div class="progress-bar-container">
-                <div class="progress-bar-fill" style="width:50%"></div>
-            </div>
-            <span class="percent">50%</span>
-        </div>
-                </div>
-                </div>
 
+                    <div class="skill-back-content">
+                        <div class="back-top">
+                            <img src="./image/sql.png" alt="SQL">
+                        </div>
+                        <div class="back-bottom">
+                            <i class="fas fa-database"></i>
+                            <h3>SQL</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width:50%"></div>
+                            </div>
+                            <span class="percent">50%</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -280,130 +291,136 @@
     <div id="portfolio">
         <div class="container">
             <h1 class="sub-title">Mes Projets</h1>
+
             <div class="slider-container reveal">
-                <i class="fas fa-chevron-left btn-slide" id="prevBtn"></i>
-                
+                <button class="btn-slide" id="prevBtn" aria-label="Projet précédent">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
                 <div class="slider">
+                    <div class="project-slide active">
+                        <a href="./image/Bot-Discor.pdf" target="_blank">
+                            <div class="project-front">
+                                <img src="./image/portfo.jpg" alt="Portfolio">
+                                <div class="project-overlay">
+                                    <h3 class="project-title">Portfolio</h3>
+                                </div>
+                            </div>
 
-    <div class="project-slide active">
-        <a href="./image/Bot-Discor.pdf" target="_blank">
-            <div class="project-front">
-                <img src="./image/portfo.jpg" alt="Projet 1">
-                <div class="project-overlay">
-                    <h3 class="project-title">Portfolio</h3>
-                </div>
-            </div>
-            <div class="project-info">  
-                <img src="./image/portfo.jpg" class="back-bg">
-                <div class="project-content">
-                    <h2>Portfolio</h2>
-                    <p>Développement d’un portfolio résentant ma personne mes competences et mes projets. Ce qui presente mes connaisances maitriser et des aquis à ameliorer.</p>
-                </div>
-            </div>
-        </a>
-    </div>
+                            <div class="project-info">
+                                <img src="./image/portfo.jpg" class="back-bg" alt="">
+                                <div class="project-content">
+                                    <h2>Portfolio</h2>
+                                    <p>Développement d’un portfolio présentant ma personne, mes compétences et mes projets.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
 
-    <div class="project-slide">
-        <a href="./image/ProjetHotel.pdf" target="_blank">
-            <div class="project-front">
-                <img src="./image/Persona - Shackled Pathsa.jpg" alt="Projet 2">
-                <div class="project-overlay">
-                    <h3 class="project-title">Site Web Hotel</h3>
-                </div>
-            </div>
-            <div class="project-info">
-                <img src="./image/Persona - Shackled Pathsa.jpg" class="back-bg">
-                <div class="project-content">
-                    <h2>Projet web Hotel</h2>
-                    <p>Création complète d’un site web pour un hôtel, incluant l’intégration du front-end et du back-end. Realiser lors d'un projet de groupe, j'ai du m'occuper des repartitions des taches. Plus tout la partie presentation et cote back-end.</p>
-                </div>
-            </div>
-        </a>
-    </div>
+                    <div class="project-slide">
+                        <a href="./image/ProjetHotel.pdf" target="_blank">
+                            <div class="project-front">
+                                <img src="./image/Persona - Shackled Pathsa.jpg" alt="Site web hôtel">
+                                <div class="project-overlay">
+                                    <h3 class="project-title">Site Web Hôtel</h3>
+                                </div>
+                            </div>
 
-    <div class="project-slide">
-        <a href="./image/Rapport de stage Aoudache Rayane (1) (1).pdf" target="_blank">
-            <div class="project-front">
-                <img src="./image/zzzzzzzzzzzzzz.jpg" alt="Projet 3">
-                <div class="project-overlay">
-                    <h3 class="project-title">Stage Free S-Cool</h3>
+                            <div class="project-info">
+                                <img src="./image/Persona - Shackled Pathsa.jpg" class="back-bg" alt="">
+                                <div class="project-content">
+                                    <h2>Projet Web Hôtel</h2>
+                                    <p>Création complète d’un site web pour un hôtel, incluant l’intégration front-end et back-end.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="project-slide">
+                        <a href="./image/Rapport de stage Aoudache Rayane (1) (1).pdf" target="_blank">
+                            <div class="project-front">
+                                <img src="./image/zzzzzzzzzzzzzz.jpg" alt="Stage Free S-Cool">
+                                <div class="project-overlay">
+                                    <h3 class="project-title">Stage Free S-Cool</h3>
+                                </div>
+                            </div>
+
+                            <div class="project-info">
+                                <img src="./image/zzzzzzzzzzzzzz.jpg" class="back-bg" alt="">
+                                <div class="project-content">
+                                    <h2>Stage Free S-Cool</h2>
+                                    <p>Stage durant lequel j’ai travaillé sur plusieurs pages web, avec une partie front-end, back-end et mise en ligne sur GitHub.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="project-info">
-                <img src="./image/zzzzzzzzzzzzzz.jpg" class="back-bg">
-                <div class="project-content">
-                    <h2>Stage Free S-Cool</h2>
-                    <p>Stage au cours duquel j’ai pu mettre en pratique et renforcer mes connaissances techniques pour l'entreprise YES IAM FREE. Realiser lors de mon stage dans la societe YES IAM FREE avec d'autre stagiaire. Je me suis occuper de la partie front de plusieur page web du projet. Plus la partie back-end et mise en rendu des travaux realiser sur github.</p>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
-                <i class="fas fa-chevron-right btn-slide" id="nextBtn"></i>
+
+                <button class="btn-slide" id="nextBtn" aria-label="Projet suivant">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </div>
 
     <div class="social-links">
-        <a href="https://linkedin.com/in/AoudacheRayane" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com/ADLM15" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://instagram.com/b.l.u.e_rayane" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com/in/AoudacheRayane" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/ADLM15" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://instagram.com/b.l.u.e_rayane" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
     </div>
 
-<div id="contact">
-    <div class="container">
-        <h1 class="sub-title">Contact</h1>
+    <div id="contact">
+        <div class="container">
+            <h1 class="sub-title">Contact</h1>
 
-        <div class="contact-wrapper reveal">
-            <div class="contact-info">
-                <h2>Travaillons ensemble</h2>
-                <p>N'hésitez pas à me contacter pour un stage, une alternance ou un projet.</p>
+            <div class="contact-wrapper reveal">
+                <div class="contact-info">
+                    <h2>Travaillons ensemble</h2>
+                    <p>N'hésitez pas à me contacter pour un stage, une alternance ou un projet.</p>
 
-                <div class="contact-details">
-                    <p><i class="fas fa-envelope"></i> raoudache.bluerayane@email.com</p>
-                    <p><i class="fas fa-phone"></i> 06 51 50 35 60</p>
-                    <p><i class="fas fa-location-dot"></i> Paris, France</p>
+                    <div class="contact-details">
+                        <p><i class="fas fa-envelope"></i> raoudache.bluerayane@email.com</p>
+                        <p><i class="fas fa-phone"></i> 06 51 50 35 60</p>
+                        <p><i class="fas fa-location-dot"></i> Paris, France</p>
+                    </div>
                 </div>
+
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Votre nom" required>
+                    <input type="email" placeholder="Votre email" required>
+                    <textarea placeholder="Votre message..." rows="6" required></textarea>
+                    <button type="submit" class="btn">Envoyer le message</button>
+                    <span id="formMsg"></span>
+                </form>
             </div>
-
-            <form class="contact-form" id="contactForm">
-                <input type="text" placeholder="Votre nom" required>
-                <input type="email" placeholder="Votre email" required>
-                <textarea placeholder="Votre message..." rows="6" required></textarea>
-                <button type="submit" class="btn">Envoyer le message</button>
-                <span id="formMsg"></span>
-            </form>
-
         </div>
     </div>
-</div>
 
-<footer class="liquid-footer">
-    <div class="bubbles">
-    <div class="bubble" style="--size:120px; --left:10%; --time:4s; --delay:0s;"></div>
-    <div class="bubble" style="--size:200px; --left:30%; --time:6s; --delay:1s;"></div>
-    <div class="bubble" style="--size:150px; --left:50%; --time:5s; --delay:0.5s;"></div>
-    <div class="bubble" style="--size:180px; --left:75%; --time:7s; --delay:2s;"></div>
-    <div class="bubble" style="--size:110px; --left:90%; --time:4s; --delay:1.2s;"></div>
-</div>
-    
-    <div class="footer-content">
-        <h2>Travaillons ensemble</h2>
-        <p>&copy; 2026 Aoudache Rayane - Recherche de Stage et Alternance</p>
-    </div>
+    <footer class="liquid-footer">
+        <div class="bubbles">
+            <div class="bubble" style="--size:120px; --left:10%; --time:4s; --delay:0s;"></div>
+            <div class="bubble" style="--size:200px; --left:30%; --time:6s; --delay:1s;"></div>
+            <div class="bubble" style="--size:150px; --left:50%; --time:5s; --delay:0.5s;"></div>
+            <div class="bubble" style="--size:180px; --left:75%; --time:7s; --delay:2s;"></div>
+            <div class="bubble" style="--size:110px; --left:90%; --time:4s; --delay:1.2s;"></div>
+        </div>
 
-    <svg style="display:none;">
-        <defs>
-            <filter id="goo">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10" result="goo" />
-                <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-            </filter>
-        </defs>
-    </svg>
-</footer>
+        <div class="footer-content">
+            <h2>Travaillons ensemble</h2>
+            <p>&copy; 2026 Aoudache Rayane - Recherche de Stage et Alternance</p>
+        </div>
+
+        <svg style="display:none;">
+            <defs>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10" result="goo" />
+                    <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                </filter>
+            </defs>
+        </svg>
+    </footer>
 
     <script src="./JS/portfolio.js"></script>
-
 </body>
 </html>
