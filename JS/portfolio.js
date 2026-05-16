@@ -1,6 +1,7 @@
 const slides = document.querySelectorAll('.project-slide');
 const nextBtn = document.getElementById('nextBtn');
 const prevBtn = document.getElementById('prevBtn');
+const isMobile = window.innerWidth <= 768;
 
 let index = 0;
 
@@ -11,30 +12,16 @@ function showSlide(n) {
 }
 
 if (nextBtn && prevBtn && slides.length > 0) {
-    nextBtn.addEventListener('click', () => {
-        showSlide(index + 1);
-    });
-
-    prevBtn.addEventListener('click', () => {
-        showSlide(index - 1);
-    });
+    nextBtn.addEventListener('click', () => showSlide(index + 1));
+    prevBtn.addEventListener('click', () => showSlide(index - 1));
 }
-
-const isMobile = window.innerWidth <= 768;
 
 slides.forEach(slide => {
     if (isMobile) {
-        slide.addEventListener('click', () => {
-            slide.classList.toggle('flip');
-        });
+        slide.addEventListener('click', () => slide.classList.toggle('flip'));
     } else {
-        slide.addEventListener('mouseenter', () => {
-            slide.classList.add('flip');
-        });
-
-        slide.addEventListener('mouseleave', () => {
-            slide.classList.remove('flip');
-        });
+        slide.addEventListener('mouseenter', () => slide.classList.add('flip'));
+        slide.addEventListener('mouseleave', () => slide.classList.remove('flip'));
     }
 });
 
@@ -61,7 +48,6 @@ let letter = '';
 
     currentText = texts[typingCount];
     letter = currentText.slice(0, ++indexText);
-
     typingText.textContent = letter;
 
     if (letter.length === currentText.length) {
@@ -210,6 +196,8 @@ navOverlay.className = 'nav-overlay';
 document.body.appendChild(navOverlay);
 
 function closeMenu() {
+    if (!navMenu || !burger || !navbar) return;
+
     navMenu.classList.remove('active');
     burger.classList.remove('active');
     navOverlay.classList.remove('active');
@@ -219,6 +207,8 @@ function closeMenu() {
 }
 
 function openMenu() {
+    if (!navMenu || !burger || !navbar) return;
+
     navMenu.classList.add('active');
     burger.classList.add('active');
     navOverlay.classList.add('active');
@@ -330,13 +320,8 @@ if (cursor && !isMobile) {
     });
 
     document.querySelectorAll('a, button').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursor.classList.add('active');
-        });
-
-        el.addEventListener('mouseleave', () => {
-            cursor.classList.remove('active');
-        });
+        el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
     });
 }
 
@@ -345,18 +330,50 @@ if (cursor && isMobile) {
 }
 
 window.addEventListener('load', () => {
-    const loader = document.getElementById('loader');
+    const loader = document.getElementById('advanced-loader');
+    const progress = document.querySelector('.loader-progress');
 
-    if (!loader) return;
+    if (!loader) {
+        document.body.classList.add('loaded');
+        return;
+    }
 
-    setTimeout(() => {
-        loader.style.opacity = '0';
-        loader.style.visibility = 'hidden';
+    if (window.gsap && progress) {
+        const tl = gsap.timeline();
+
+        tl.to(progress, {
+            width: '100%',
+            duration: 2.5,
+            ease: 'power4.out'
+        })
+        .to(loader, {
+            opacity: 0,
+            duration: 1,
+            delay: 0.3,
+            ease: 'power2.out'
+        })
+        .set(loader, {
+            display: 'none'
+        })
+        .add(() => {
+            loader.classList.add('hide');
+            document.body.classList.add('loaded');
+        });
+    } else {
+        if (progress) {
+            progress.style.transition = 'width 3s ease';
+            progress.style.width = '100%';
+        }
 
         setTimeout(() => {
-            loader.remove();
-        }, 500);
-    }, 1500);
+            loader.classList.add('hide');
+            document.body.classList.add('loaded');
+
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 1000);
+        }, 3500);
+    }
 });
 
 window.addEventListener('load', () => {
