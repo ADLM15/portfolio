@@ -9,6 +9,12 @@
 </head>
 
 <body>
+    <div id="loader">
+        <h1>Rayane.</h1>
+    </div>
+
+    <div id="particles-js"></div>
+
     <div class="cursor"></div>
 
     <div class="hero" id="hero">
@@ -18,6 +24,7 @@
             <ul id="navMenu">
                 <li><a href="#hero">Accueil</a></li>
                 <li><a href="#skills">Mes Compétences</a></li>
+                <li><a href="#timeline">Parcours</a></li>
                 <li><a href="#portfolio">Mes projets</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -42,7 +49,7 @@
                     <a href="#skill-react" class="orbit-item"><i class="fab fa-react"></i></a>
                     <a href="#skill-github" class="orbit-item"><i class="fab fa-github"></i></a>
                     <a href="#skill-unity" class="orbit-item"><i class="fab fa-unity"></i></a>
-                    <a href="#skill-csharp" class="orbit-item"><i class="fas fa-code"></i></a>
+                    <a href="#skill-node" class="orbit-item"><i class="fab fa-node-js"></i></a>
                     <a href="#skill-sql" class="orbit-item"><i class="fas fa-database"></i></a>
                 </div>
             </div>
@@ -50,7 +57,7 @@
             <div class="text-content reveal">
                 <h2 class="intro-text">Bonjour, je suis</h2>
                 <h1>AOUDACHE Rayane <span>étudiant 2ème année.</span></h1>
-                <h3>Développeur Web Full Stack</h3>
+                <h3 class="typing-text"></h3>
 
                 <p class="desc-text1">
                     Je suis un étudiant de deuxième année en préparatoire à l’école IPSSI du campus de Paris. Je poursuis un cursus en informatique qui me donne des bases solides en programmation, en développement web et en conception de projets numériques. Passionné par le monde du développement, je souhaite aujourd’hui mettre en pratique mes connaissances au sein d’une entreprise et enrichir mon expérience professionnelle.
@@ -71,6 +78,23 @@
             </div>
         </div>
     </div>
+
+    <section class="stats reveal">
+        <div class="stat">
+            <h2 data-target="12">0</h2>
+            <p>Compétences</p>
+        </div>
+
+        <div class="stat">
+            <h2 data-target="5">0</h2>
+            <p>Projet</p>
+        </div>
+
+        <div class="stat">
+            <h2 data-target="2">0</h2>
+            <p>Stage</p>
+        </div>
+    </section>
 
     <div id="skills">
         <div class="container">
@@ -185,7 +209,7 @@
                     </div>
                 </div>
 
-                <div class="skill-card" data-category="backend" id="skill-csharp">
+                <div class="skill-card" data-category="backend" id="skill-node">
                     <i class="fab fa-node-js"></i>
                     <h2>Node</h2>
                     <p>Développement backend moderne et création d’API rapides grâce à JavaScript côté serveur.</p>
@@ -245,14 +269,14 @@
                     </div>
                 </div>
 
-                <div class="skill-card" data-category="web" id="skill-html">
+                <div class="skill-card" data-category="backend" id="skill-java">
                     <i class="fab fa-java"></i>
                     <h2>Java</h2>
                     <p>Développement d’applications robustes et orientées objet avec Java.</p>
 
                     <div class="skill-back-content">
                         <div class="back-top">
-                            <img src="./image/Java.png" alt="HTML">
+                            <img src="./image/Java.png" alt="Java">
                         </div>
                         <div class="back-bottom">
                             <i class="fab fa-java"></i>
@@ -264,15 +288,15 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="skill-card" data-category="web" id="skill-html">
+
+                <div class="skill-card" data-category="web" id="skill-angular">
                     <i class="fab fa-angular"></i>
                     <h2>Angular</h2>
                     <p>Développement d’interfaces dynamiques et structurées avec Angular et TypeScript.</p>
 
                     <div class="skill-back-content">
                         <div class="back-top">
-                            <img src="./image/Angular.png" alt="HTML">
+                            <img src="./image/Angular.png" alt="Angular">
                         </div>
                         <div class="back-bottom">
                             <i class="fab fa-angular"></i>
@@ -327,6 +351,48 @@
             </div>
         </div>
     </div>
+
+    <section id="timeline">
+        <div class="container">
+            <h1 class="sub-title">Mon Parcours</h1>
+
+            <div class="timeline reveal">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-content">
+                        <h2>École</h2>
+                        <p>Deuxième année en cursus informatique à l'IPSSI, avec des bases solides en développement web et programmation.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-content">
+                        <h2>Stage</h2>
+                        <p>Première expérience en développement full stack, avec travail sur des pages web, back-end et mise en ligne.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-content">
+                        <h2>Projets</h2>
+                        <p>Création de projets web, portfolio, site hôtel et outils personnels pour progresser en front-end et back-end.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-content">
+                        <h2>Objectifs</h2>
+                        <p>Trouver un stage ou une alternance pour continuer à apprendre, contribuer à une équipe et monter en compétences.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <div id="portfolio">
         <div class="container">
@@ -461,6 +527,7 @@
         </svg>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
     <script src="./JS/portfolio.js"></script>
 </body>
 </html>
