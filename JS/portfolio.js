@@ -5,11 +5,22 @@ const isMobile = window.innerWidth <= 768;
 
 let index = 0;
 
+const dots = document.querySelectorAll('.slider-dot');
+
 function showSlide(n) {
     slides.forEach(slide => slide.classList.remove('active', 'flip'));
     index = (n + slides.length) % slides.length;
     slides[index].classList.add('active');
+
+    dots.forEach(dot => dot.classList.remove('active'));
+    if (dots[index]) dots[index].classList.add('active');
 }
+
+dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+        showSlide(+dot.getAttribute('data-index'));
+    });
+});
 
 if (nextBtn && prevBtn && slides.length > 0) {
     nextBtn.addEventListener('click', () => showSlide(index + 1));
@@ -67,16 +78,12 @@ skillCards.forEach(card => {
     if (!isMobile) {
         card.addEventListener('mousemove', e => {
             const rect = card.getBoundingClientRect();
-
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-
             const rotateY = (x - centerX) / 25;
             const rotateX = (centerY - y) / 25;
-
             card.style.setProperty('--x', `${x}px`);
             card.style.setProperty('--y', `${y}px`);
             card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
@@ -89,7 +96,6 @@ skillCards.forEach(card => {
 
     card.addEventListener('click', () => {
         card.classList.toggle('active-skill');
-
         if (card.classList.contains('active-skill')) {
             card.style.transform = 'rotateX(0) rotateY(0) scale(1)';
         }
@@ -103,9 +109,7 @@ filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-
         const filter = btn.getAttribute('data-filter');
-
         skillCardsFilter.forEach(card => {
             if (filter === 'all' || card.getAttribute('data-category') === filter) {
                 card.style.display = 'block';
@@ -121,19 +125,14 @@ let countersStarted = false;
 
 function startCounters() {
     if (countersStarted) return;
-
     const stats = document.querySelector('.stats');
-
     if (!stats || stats.getBoundingClientRect().top > window.innerHeight - 100) return;
-
     countersStarted = true;
-
     counters.forEach(counter => {
         const updateCounter = () => {
             const target = +counter.getAttribute('data-target');
             const current = +counter.innerText;
             const increment = Math.max(target / 100, 1);
-
             if (current < target) {
                 counter.innerText = `${Math.ceil(current + increment)}`;
                 setTimeout(updateCounter, 20);
@@ -141,7 +140,6 @@ function startCounters() {
                 counter.innerText = target;
             }
         };
-
         updateCounter();
     });
 }
@@ -155,10 +153,8 @@ const formMsg = document.getElementById('formMsg');
 if (form && formMsg) {
     form.addEventListener('submit', e => {
         e.preventDefault();
-
         formMsg.textContent = 'Message envoyé avec succès !';
         form.reset();
-
         setTimeout(() => {
             formMsg.textContent = '';
         }, 3000);
@@ -169,10 +165,8 @@ const reveals = document.querySelectorAll('.reveal');
 
 function revealOnScroll() {
     const windowHeight = window.innerHeight;
-
     reveals.forEach(el => {
         const elementTop = el.getBoundingClientRect().top;
-
         if (elementTop < windowHeight - 100) {
             el.classList.add('active');
         }
@@ -197,7 +191,6 @@ document.body.appendChild(navOverlay);
 
 function closeMenu() {
     if (!navMenu || !burger || !navbar) return;
-
     navMenu.classList.remove('active');
     burger.classList.remove('active');
     navOverlay.classList.remove('active');
@@ -208,7 +201,6 @@ function closeMenu() {
 
 function openMenu() {
     if (!navMenu || !burger || !navbar) return;
-
     navMenu.classList.add('active');
     burger.classList.add('active');
     navOverlay.classList.add('active');
@@ -233,15 +225,12 @@ if (burger && navMenu && navbar) {
     });
 
     document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') {
-            closeMenu();
-        }
+        if (e.key === 'Escape') closeMenu();
     });
 }
 
 window.addEventListener('scroll', () => {
     if (!navbar) return;
-
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
     } else {
@@ -257,7 +246,6 @@ window.addEventListener('scroll', () => {
     if (!isMobile && orbitContainer) {
         orbitContainer.style.transform = `translateY(${scroll * 0.2}px)`;
     }
-
     if (!isMobile && textContent) {
         textContent.style.transform = `translateY(${scroll * 0.1}px)`;
     }
@@ -266,14 +254,9 @@ window.addEventListener('scroll', () => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const target = document.querySelector(this.getAttribute('href'));
-
         if (!target) return;
-
         e.preventDefault();
-
-        target.scrollIntoView({
-            behavior: 'smooth'
-        });
+        target.scrollIntoView({ behavior: 'smooth' });
     });
 });
 
@@ -282,12 +265,9 @@ const buttons = document.querySelectorAll('.btn');
 buttons.forEach(btn => {
     btn.addEventListener('mousemove', e => {
         if (isMobile) return;
-
         const rect = btn.getBoundingClientRect();
-
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-
         btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
     });
 
@@ -298,13 +278,10 @@ buttons.forEach(btn => {
 
 function updateTimelineProgress() {
     const timeline = document.querySelector('.timeline');
-
     if (!timeline) return;
-
     const rect = timeline.getBoundingClientRect();
     const total = rect.height + window.innerHeight;
     const progress = Math.min(Math.max((window.innerHeight - rect.top) / total, 0), 1) * 100;
-
     timeline.style.setProperty('--timeline-progress', `${progress}%`);
 }
 
@@ -340,7 +317,6 @@ window.addEventListener('load', () => {
 
     if (window.gsap && progress) {
         const tl = gsap.timeline();
-
         tl.to(progress, {
             width: '100%',
             duration: 2.5,
@@ -352,9 +328,7 @@ window.addEventListener('load', () => {
             delay: 0.3,
             ease: 'power2.out'
         })
-        .set(loader, {
-            display: 'none'
-        })
+        .set(loader, { display: 'none' })
         .add(() => {
             loader.classList.add('hide');
             document.body.classList.add('loaded');
@@ -364,11 +338,9 @@ window.addEventListener('load', () => {
             progress.style.transition = 'width 3s ease';
             progress.style.width = '100%';
         }
-
         setTimeout(() => {
             loader.classList.add('hide');
             document.body.classList.add('loaded');
-
             setTimeout(() => {
                 loader.style.display = 'none';
             }, 1000);
@@ -386,15 +358,9 @@ window.addEventListener('load', () => {
             particles: {
                 number: {
                     value: 55,
-                    density: {
-                        enable: true,
-                        width: 1200,
-                        height: 900
-                    }
+                    density: { enable: true, width: 1200, height: 900 }
                 },
-                color: {
-                    value: ['#ff014f', '#00a6ff', '#ffffff']
-                },
+                color: { value: ['#ff014f', '#00a6ff', '#ffffff'] },
                 links: {
                     enable: true,
                     color: '#ff014f',
@@ -406,19 +372,10 @@ window.addEventListener('load', () => {
                     enable: true,
                     speed: 0.8,
                     direction: 'none',
-                    outModes: {
-                        default: 'bounce'
-                    }
+                    outModes: { default: 'bounce' }
                 },
-                opacity: {
-                    value: 0.45
-                },
-                size: {
-                    value: {
-                        min: 1,
-                        max: 3
-                    }
-                }
+                opacity: { value: 0.45 },
+                size: { value: { min: 1, max: 3 } }
             },
             detectRetina: true
         }
