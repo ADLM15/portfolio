@@ -381,3 +381,14 @@ window.addEventListener('load', () => {
         }
     });
 });
+
+document.querySelectorAll('.cert-item img').forEach(img => {
+    const showFallback = () => {
+        const fallback = document.createElement('div');
+        fallback.className = 'cert-fallback';
+        fallback.innerHTML = '<i class="fas fa-certificate"></i>';
+        img.replaceWith(fallback);
+    };
+    img.addEventListener('error', showFallback);
+    if (img.complete && img.naturalWidth === 0) showFallback();
+});
