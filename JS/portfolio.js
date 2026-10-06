@@ -392,3 +392,111 @@ document.querySelectorAll('.cert-item img').forEach(img => {
     img.addEventListener('error', showFallback);
     if (img.complete && img.naturalWidth === 0) showFallback();
 });
+
+/* ===== CERTIFICATS : rotation au glisser, inertie, profondeur, inclinaison ===== */
+(function certificatesRing() {
+    const stage = document.querySelector('.cert-stage');
+    const ring = document.querySelector('.cert-ring');
+    const items = ring ? [...ring.querySelectorAll('.cert-item')] : [];
+    if (!stage || !ring || items.length === 0) return;
+
+    ring.style.animation = 'none';
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const AUTO_SPEED = reduceMotion ? 0 : 360 / 32;
+    const STEP = 360 / items.length;
+
+    let angle = 0;
+    let velocity = reduceMotion ? 0 : 520;
+    let tilt = -10;
+    let tiltTarget = -10;
+    let dragging = false;
+    let hovering = false;
+    let visible = false;
+    let lastX = 0;
+    let lastMoveT = 0;
+    let moved = 0;
+    let lastFrame = performance.now();
+
+    function render() {
+        ring.style.transform = `rotateX(${tilt}deg) rotateY(${angle}deg)`;
+        items.forEach((item, i) => {
+            const a = ((i * STEP + angle) * Math.PI) / 180;
+            const depth = (Math.cos(a) + 1) / 2;
+            item.style.opacity = (0.22 + 0.78 * depth).toFixed(3);
+            item.style.pointerEvents = depth > 0.3 ? 'auto' : 'none';
+        });
+    }
+
+    function frame(now) {
+        const dt = Math.min((now - lastFrame) / 1000, 0.05);
+        lastFrame = now;
+
+        if (visible) {
+            if (!dragging) {
+                const target = hovering ? 0 : AUTO_SPEED;
+                velocity += (target - velocity) * Math.min(dt * 2.5, 1);
+                angle += velocity * dt;
+            }
+            tilt += (tiltTarget - tilt) * Math.min(dt * 6, 1);
+            render();
+        }
+        requestAnimationFrame(frame);
+    }
+
+    new IntersectionObserver(entries => {
+        visible = entries[0].isIntersecting;
+    }, { threshold: 0.05 }).observe(stage);
+
+    stage.addEventListener('dragstart', e => e.preventDefault());
+
+    stage.addEventListener('pointerdown', e => {
+        dragging = true;
+        moved = 0;
+        lastX = e.clientX;
+        lastMoveT = performance.now();
+        velocity = 0;
+    });
+
+    window.addEventListener('pointermove', e => {
+        if (dragging) {
+            const now = performance.now();
+            const dx = e.clientX - lastX;
+            const dtMove = Math.max((now - lastMoveT) / 1000, 0.008);
+            lastX = e.clientX;
+            lastMoveT = now;
+            moved += Math.abs(dx);
+            angle += dx * 0.35;
+            velocity = velocity * 0.6 + ((dx * 0.35) / dtMove) * 0.4;
+        }
+    });
+
+    window.addEventListener('pointerup', () => { dragging = false; });
+    window.addEventListener('pointercancel', () => { dragging = false; });
+
+    stage.addEventListener('pointerenter', e => {
+        if (e.pointerType === 'mouse') hovering = true;
+    });
+
+    stage.addEventListener('pointerleave', () => {
+        hovering = false;
+        tiltTarget = -10;
+    });
+
+    stage.addEventListener('pointermove', e => {
+        if (e.pointerType !== 'mouse') return;
+        const rect = stage.getBoundingClientRect();
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        tiltTarget = -10 - y * 14;
+    });
+
+    stage.addEventListener('click', e => {
+        if (moved > 6) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    }, true);
+
+    render();
+    requestAnimationFrame(frame);
+})();
